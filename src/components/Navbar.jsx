@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     // Removed the navbar-hidden logic entirely
     <nav className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}>
-      <div className="logo">InnovateX</div>
+      <div className="logo">Mechathon</div>
 
       {/* Hamburger */}
       <div
