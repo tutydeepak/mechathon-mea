@@ -3,7 +3,7 @@ import Countdown from "./components/Countdown";
 import Timeline from "./components/Timeline";
 import Venue from "./components/Venue";
 import Agenda from "./components/Agenda";
-import Contact from "./Components/Contact";
+import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 
 export default function App() {
