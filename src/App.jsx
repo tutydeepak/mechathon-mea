@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Countdown from "./components/Countdown";
 import Timeline from "./components/Timeline";
-import Venue from "./Components/Venue";
+import Venue from "./components/Venue";
 import Agenda from "./components/Agenda";
 import Contact from "./Components/Contact";
 import Navbar from "./components/Navbar";
