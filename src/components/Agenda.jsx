@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
     FaQuestionCircle,
     FaDraftingCompass,
@@ -7,36 +7,32 @@ import {
 } from "react-icons/fa";
 
 export default function Agenda() {
-    // Array to hold references to our cards
+    // State to keep track of which card is currently glowing
+    const [activeIndex, setActiveIndex] = useState(null);
     const cardRefs = useRef([]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    // When the card is sufficiently in view, add the glow class
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("glow-active");
-                    } else {
-                        // Remove it when it leaves the screen so it can trigger again
-                        entry.target.classList.remove("glow-active");
+                        // Get the index from the data attribute and set it as active
+                        const index = Number(entry.target.getAttribute("data-index"));
+                        setActiveIndex(index);
                     }
                 });
             },
             {
-                // Triggers when 50% of the element is visible
                 threshold: 0.5,
-                // Slight offset so it triggers nicely on mobile screens
-                rootMargin: "-10% 0px -10% 0px"
+                // Adjusted rootMargin to create a strict "focus zone" in the vertical center of the screen
+                rootMargin: "-25% 0px -25% 0px"
             }
         );
 
-        // Observe all card refs
         cardRefs.current.forEach((card) => {
             if (card) observer.observe(card);
         });
 
-        // Cleanup on unmount
         return () => {
             cardRefs.current.forEach((card) => {
                 if (card) observer.unobserve(card);
@@ -55,8 +51,12 @@ export default function Agenda() {
                     <div className="agenda-icon">
                         <FaQuestionCircle />
                     </div>
-                    {/* Attach to ref array index 0 */}
-                    <div className="agenda-card" ref={(el) => (cardRefs.current[0] = el)}>
+                    {/* Add conditional class and data-index */}
+                    <div
+                        className={`agenda-card ${activeIndex === 0 ? "glow-active" : ""}`}
+                        data-index={0}
+                        ref={(el) => (cardRefs.current[0] = el)}
+                    >
                         <h3>Round 1 – Quiz Challenge</h3>
                         <ul>
                             <li>General Knowledge (innovation, tech, current affairs)</li>
@@ -71,8 +71,12 @@ export default function Agenda() {
                     <div className="agenda-icon">
                         <FaDraftingCompass />
                     </div>
-                    {/* Attach to ref array index 1 */}
-                    <div className="agenda-card" ref={(el) => (cardRefs.current[1] = el)}>
+                    {/* Add conditional class and data-index */}
+                    <div
+                        className={`agenda-card ${activeIndex === 1 ? "glow-active" : ""}`}
+                        data-index={1}
+                        ref={(el) => (cardRefs.current[1] = el)}
+                    >
                         <h3>Round 2 – Presentation - Design Challenge</h3>
                         <a href="#" className="highlight-box">
                             <p>Second Year & Above: SolidWorks modelling</p>
@@ -89,8 +93,12 @@ export default function Agenda() {
                     <div className="agenda-icon">
                         <FaLightbulb />
                     </div>
-                    {/* Attach to ref array index 2 */}
-                    <div className="agenda-card" ref={(el) => (cardRefs.current[2] = el)}>
+                    {/* Add conditional class and data-index */}
+                    <div
+                        className={`agenda-card ${activeIndex === 2 ? "glow-active" : ""}`}
+                        data-index={2}
+                        ref={(el) => (cardRefs.current[2] = el)}
+                    >
                         <h3>Problem Statement & Pitch</h3>
                         <ul>
                             <li>Real-world mechanical problem statement</li>
@@ -106,8 +114,12 @@ export default function Agenda() {
                     <div className="agenda-icon">
                         <FaCube />
                     </div>
-                    {/* Attach to ref array index 3 */}
-                    <div className="agenda-card" ref={(el) => (cardRefs.current[3] = el)}>
+                    {/* Add conditional class and data-index */}
+                    <div
+                        className={`agenda-card ${activeIndex === 3 ? "glow-active" : ""}`}
+                        data-index={3}
+                        ref={(el) => (cardRefs.current[3] = el)}
+                    >
                         <h3>Round 3 – CAD Development & Prototyping</h3>
                         <ul>
                             <li>Complete CAD assembly required</li>

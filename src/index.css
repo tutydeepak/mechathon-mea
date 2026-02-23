@@ -698,10 +698,25 @@ body {
   transition: all 0.3s ease;
 }
 
-.agenda-card:hover {
+/* .agenda-card:hover {
   transform: translateY(-6px);
   border-color: #38bdf8;
   box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+} */
+
+/* Find this block in your CSS... */
+.agenda-card:hover {
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.8);
+  transform: translateY(-5px);
+  /* whatever other glow styles you have */
+}
+
+/* ...and change it to this: */
+.agenda-card:hover,
+.agenda-card.glow-active {
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.8);
+  /* Use your actual glow colors */
+  transform: translateY(-5px);
 }
 
 .agenda-card h3 {
