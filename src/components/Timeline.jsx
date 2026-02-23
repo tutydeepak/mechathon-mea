@@ -4,18 +4,18 @@ function Timeline() {
     const days = [
         {
             title: "Day 1",
-            subtitle: "Ideation & Team Formation",
-            desc: "Opening ceremony, problem statement release, team formation and initial planning."
+            subtitle: "Quiz & Opening Ceremony",
+            desc: "Opening ceremony, team introductions, and the quiz challenge to kickstart the hackathon."
         },
         {
             title: "Day 2",
-            subtitle: "Development & Mentoring",
-            desc: "Full project development, mentor sessions and mid-evaluation."
+            subtitle: "Presentation, Mentoring & Final Pitch, ",
+            desc: "Design challenge presentations, followed by mentoring sessions to refine project ideas and solutions."
         },
         {
             title: "Day 3",
-            subtitle: "Final Pitch & Awards",
-            desc: "Project submission, demo presentation, judging and prize distribution."
+            subtitle: "Development & Awards",
+            desc: "Final development push, project submissions, and the awards ceremony to celebrate the winners and participants."
         }
     ];
 

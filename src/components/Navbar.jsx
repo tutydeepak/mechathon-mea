@@ -43,6 +43,7 @@ const Navbar = () => {
       {/* Nav Links */}
       <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
+        <a href="#register" onClick={() => setMenuOpen(false)}>Register</a>
         <a href="#agenda" onClick={() => setMenuOpen(false)}>Agenda</a>
         <a href="#timeline" onClick={() => setMenuOpen(false)}>Timeline</a>
         <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>

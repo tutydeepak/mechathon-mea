@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
     FaQuestionCircle,
     FaDraftingCompass,
@@ -7,6 +7,43 @@ import {
 } from "react-icons/fa";
 
 export default function Agenda() {
+    // Array to hold references to our cards
+    const cardRefs = useRef([]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    // When the card is sufficiently in view, add the glow class
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("glow-active");
+                    } else {
+                        // Remove it when it leaves the screen so it can trigger again
+                        entry.target.classList.remove("glow-active");
+                    }
+                });
+            },
+            {
+                // Triggers when 50% of the element is visible
+                threshold: 0.5,
+                // Slight offset so it triggers nicely on mobile screens
+                rootMargin: "-10% 0px -10% 0px"
+            }
+        );
+
+        // Observe all card refs
+        cardRefs.current.forEach((card) => {
+            if (card) observer.observe(card);
+        });
+
+        // Cleanup on unmount
+        return () => {
+            cardRefs.current.forEach((card) => {
+                if (card) observer.unobserve(card);
+            });
+        };
+    }, []);
+
     return (
         <section id="agenda" className="agenda-section">
             <h2 className="agenda-title">Hackathon Agenda</h2>
@@ -18,13 +55,13 @@ export default function Agenda() {
                     <div className="agenda-icon">
                         <FaQuestionCircle />
                     </div>
-                    <div className="agenda-card">
+                    {/* Attach to ref array index 0 */}
+                    <div className="agenda-card" ref={(el) => (cardRefs.current[0] = el)}>
                         <h3>Round 1 – Quiz Challenge</h3>
                         <ul>
                             <li>General Knowledge (innovation, tech, current affairs)</li>
                             <li>Mechanical Engineering fundamentals</li>
                             <li>Logical & problem-solving questions</li>
-                            <li>Elimination round to shortlist teams</li>
                         </ul>
                     </div>
                 </div>
@@ -34,31 +71,27 @@ export default function Agenda() {
                     <div className="agenda-icon">
                         <FaDraftingCompass />
                     </div>
-                    <div className="agenda-card">
-                        <h3>Round 2 – Design Challenge</h3>
-
-                        {/* Change <a> back to <div> if you don't want it to be a clickable link.
-                          Replace "#" with your actual URL if you do.
-                        */}
+                    {/* Attach to ref array index 1 */}
+                    <div className="agenda-card" ref={(el) => (cardRefs.current[1] = el)}>
+                        <h3>Round 2 – Presentation - Design Challenge</h3>
                         <a href="#" className="highlight-box">
-                            <p>First Year: AutoCAD modelling task</p>
                             <p>Second Year & Above: SolidWorks modelling</p>
                         </a>
-
                         <ul>
                             <li>Time-bound design problem</li>
-                            <li>Evaluated on creativity & modelling efficiency</li>
+                            <li>Evaluated on creativity & mechanicsm efficiency presented</li>
                         </ul>
                     </div>
                 </div>
 
-                {/* Round 3 */}
+                {/* Problem Statement */}
                 <div className="agenda-item">
                     <div className="agenda-icon">
                         <FaLightbulb />
                     </div>
-                    <div className="agenda-card">
-                        <h3>Round 3 – Problem Statement & Pitch</h3>
+                    {/* Attach to ref array index 2 */}
+                    <div className="agenda-card" ref={(el) => (cardRefs.current[2] = el)}>
+                        <h3>Problem Statement & Pitch</h3>
                         <ul>
                             <li>Real-world mechanical problem statement</li>
                             <li>Develop an innovative solution</li>
@@ -68,13 +101,14 @@ export default function Agenda() {
                     </div>
                 </div>
 
-                {/* Round 4 */}
+                {/* Round 3 */}
                 <div className="agenda-item">
                     <div className="agenda-icon">
                         <FaCube />
                     </div>
-                    <div className="agenda-card">
-                        <h3>Round 4 – CAD Development & Prototyping</h3>
+                    {/* Attach to ref array index 3 */}
+                    <div className="agenda-card" ref={(el) => (cardRefs.current[3] = el)}>
+                        <h3>Round 3 – CAD Development & Prototyping</h3>
                         <ul>
                             <li>Complete CAD assembly required</li>
                             <li>Strictly no GrabCAD or external downloads</li>
