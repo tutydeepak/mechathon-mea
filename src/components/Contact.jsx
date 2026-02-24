@@ -8,11 +8,11 @@ export default function Contact() {
 
             <div className="contact-container">
 
-                <div className="contact-card">
+                {/* <div className="contact-card">
                     <FaEnvelope className="contact-icon" />
                     <h3>Email</h3>
                     <p>mechathon@innovatex.com</p>
-                </div>
+                </div> */}
 
                 <div className="contact-card">
                     <FaPhone className="contact-icon" />

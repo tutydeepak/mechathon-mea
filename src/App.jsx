@@ -54,11 +54,18 @@ export default function App() {
       <div id="register" className="register-section">
         <h2 className="register-title">Ready to Compete?</h2>
 
-        <button className="modern-register-btn">
+        <a
+          href="https://forms.gle/99X2JvUajtcjvTVu6"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="modern-register-btn"
+          style={{ textDecoration: "none", display: "inline-flex" }}
+        >
           <span>Register Now</span>
+
           <svg
             className="btn-arrow"
-            width="26"   
+            width="26"
             height="26"
             viewBox="0 0 24 24"
             fill="none"
@@ -70,7 +77,7 @@ export default function App() {
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
-        </button>
+        </a>
       </div>
       <div id="agenda">
         <Agenda />
