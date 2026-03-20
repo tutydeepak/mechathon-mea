@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEnvelope, FaPhone, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
 
 export default function Contact() {
     return (
@@ -8,34 +8,19 @@ export default function Contact() {
 
             <div className="contact-container">
 
-                {/* <div className="contact-card">
-                    <FaEnvelope className="contact-icon" />
-                    <h3>Email</h3>
-                    <p>mechathon@innovatex.com</p>
-                </div> */}
-
-                <div className="contact-card">
-                    <FaPhone className="contact-icon" />
+                {/* Clickable Phone Card opening the dialer */}
+                <a href="tel:+918921697501" className="contact-card">
+                    <div className="icon-wrapper">
+                        <FaPhone className="contact-icon" />
+                    </div>
                     <h3>Phone</h3>
-                    <p>+91 98765 43210</p>
-                </div>
-
-                <div className="contact-card">
-                    <FaInstagram className="contact-icon" />
-                    <h3>Instagram</h3>
-                    <p>@mechathon_official</p>
-                </div>
-
-                <div className="contact-card">
-                    <FaLinkedin className="contact-icon" />
-                    <h3>LinkedIn</h3>
-                    <p>InnovateX MEA</p>
-                </div>
+                    <p>+91 89216 97501<br />+91 93454 43413</p>
+                </a>
 
             </div>
 
             <div className="contact-footer">
-                © {new Date().getFullYear()} Mechathon | Designed by MEA
+                <p>© {new Date().getFullYear()} Mechathon | Designed by <span>MEA</span></p>
             </div>
         </section>
     );

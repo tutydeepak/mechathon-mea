@@ -775,6 +775,10 @@ body {
   padding: 120px 20px 60px;
   background: radial-gradient(circle at top, rgba(56, 189, 248, 0.05), transparent 70%);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact-title {
@@ -797,6 +801,23 @@ body {
   border-radius: 18px;
   border: 2px dashed rgba(56, 189, 248, 0.4);
   transition: all 0.3s ease;
+  display: inline-flex;
+  /* 🔥 prevents full width stretch */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 20px;
+  /* ⬅️ reduced from big padding */
+  width: 240px;
+  /* ⬅️ fixed compact width */
+  min-height: 140px;
+  /* ⬅️ controls height */
+
+  border-radius: 16px;
+  text-align: center;
+
+  gap: 6px;
 }
 
 .contact-card:hover {
@@ -956,5 +977,99 @@ body {
     font-size: 9px;
     /* Scales down the "DAYS", "HOURS" labels */
     letter-spacing: 0.5px;
+  }
+}
+
+/* --- POSTER SECTION --- */
+.poster-section {
+  padding: 100px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  color: #f8fafc;
+}
+
+.poster-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  /* Cool metallic/blue gradient text for the title */
+  background: linear-gradient(to right, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.poster-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  /* Gives depth to the 3D effect */
+}
+
+/* --- THE CARD CONTAINER --- */
+.poster-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  /* Keeps the shine inside */
+  cursor: pointer;
+  transform-style: preserve-3d;
+  /* Soft ambient shadow + deep drop shadow */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(56, 189, 248, 0.15);
+  /* Initial entry animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- THE IMAGE --- */
+.poster-image {
+  width: 420px;
+  max-width: 90vw;
+  display: block;
+  border-radius: 24px;
+  object-fit: cover;
+  /* We let React handle the transform transitions now for smooth mouse tracking */
+}
+
+/* --- THE LIGHT SWEEP (SHINE) --- */
+.shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  /* Creates a smooth, fading glass-like reflection */
+  background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  /* Allows the mouse to interact with the card beneath it */
+  z-index: 2;
+}
+
+.poster-card:hover .shine {
+  animation: shineMove 1.2s ease-in-out;
+}
+
+/* --- KEYFRAMES --- */
+@keyframes shineMove {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
