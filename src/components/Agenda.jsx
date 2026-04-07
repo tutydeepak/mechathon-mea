@@ -8,6 +8,7 @@ import {
   FaTools,
   FaMugHot,
   FaFileAlt,
+  FaChevronDown,
 } from "react-icons/fa";
 
 // 1. Additional Information Component
@@ -100,6 +101,76 @@ function AdditionalInfo() {
             })}
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function AgendaFAQ() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    {
+      q: "Who can participate in the hackathon?",
+      a: "Any eligible college student/team can participate as per the event’s registration guidelines.",
+    },
+    {
+      q: "How should I form my team?",
+      a: "Fill out the registration form with your preferred team members. You'll be notified from the WhatsApp group about your team formation and next steps.",
+    },
+    {
+      q: "Can I have team members from different years?",
+      a: "Yes, mixed-year teams are encouraged.",
+    },
+    {
+      q: "Are external downloads/tools allowed for CAD/prototyping?",
+      a: "No external downloads are allowed. You must develop and prepare the CAD/prototype as per the event rules.",
+    },
+    {
+      q: "Do I need to bring my laptop?",
+      a: "No, no need to bring your own laptop for development and prototyping purposes. All necessary resources will be provided on-site.",
+    },
+    {
+      q: "What support will be available during the event (OD / guidance)?",
+      a: "On Duty (OD) support and guidance will be facilitated as per institutional guidelines. No need to worry about that, just focus on building your project!",
+    },
+    {
+      q: "What will the judges evaluate?",
+      a: "Evaluation is based on rulebook, it'll be announced on the day of the event.",
+    },
+    {
+      q: "How do I contact the organizers if I have more questions?",
+      a: "You can contact the organizers via the WhatsApp group",
+    },
+  ];
+
+  return (
+    <div className="agenda-faq">
+      <div className="agenda-faq__inner">
+        <h3 className="agenda-faq__title">FAQs</h3>
+
+        {faqs.map((item, idx) => {
+          const isOpen = openIndex === idx;
+          return (
+            <div key={item.q} className="agenda-faq__item">
+              <button
+                type="button"
+                className={`agenda-faq__button ${isOpen ? "is-open" : ""}`}
+                onClick={() => setOpenIndex(isOpen ? null : idx)}
+                aria-expanded={isOpen}
+              >
+                <span className="agenda-faq__q">{item.q}</span>
+                <span className="agenda-faq__chev" aria-hidden="true">
+                  <FaChevronDown />
+                </span>
+              </button>
+
+              <div className={`agenda-faq__panel ${isOpen ? "is-open" : ""}`}>
+                <div className="agenda-faq__a">{item.a}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -217,6 +288,7 @@ export default function Agenda() {
 
       {/* Rendering the updated component */}
       <AdditionalInfo />
+      <AgendaFAQ />
       
     </section>
   );

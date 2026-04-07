@@ -946,6 +946,89 @@ body {
   }
 }
 
+/* --- AGENDA: FAQ ACCORDION --- */
+.agenda-faq {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.agenda-faq__inner {
+  width: 100%;
+  max-width: 950px;
+}
+
+.agenda-faq__title {
+  font-size: 28px;
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.agenda-faq__item {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.06);
+}
+
+.agenda-faq__button {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.agenda-faq__q {
+  color: #e2e8f0;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.agenda-faq__chev {
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.agenda-faq__button.is-open .agenda-faq__chev {
+  transform: rotate(180deg);
+}
+
+.agenda-faq__panel {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.35s ease;
+  overflow: hidden;
+}
+
+.agenda-faq__panel.is-open {
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.agenda-faq__a {
+  padding: 0 16px 16px;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
 /* --- CONTACT SECTION --- */
 .contact-section {
   padding: 120px 20px 60px;
