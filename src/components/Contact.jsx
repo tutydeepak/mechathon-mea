@@ -20,7 +20,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-footer">
-                <p>© {new Date().getFullYear()} Mechathon | Designed by <span>MEA</span></p>
+                <p>© {new Date().getFullYear()} Mechathon | Designed by <span>Deepak</span></p>
             </div>
         </section>
     );
