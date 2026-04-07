@@ -43,8 +43,8 @@ export default function App() {
       {/* Hero Section */}
       <div id="home" className="hero">
         <h1 className="hero-title">
+          <span className="hero-subtitle">Mechanical Engineering Association presents</span>
           <span className="main-title">Mechathon</span>
-          <span className="hero-subtitle">An Initiative from MEA</span>
         </h1>
 
         <Countdown />
